@@ -8,6 +8,7 @@ export default function Home() {
     minutes: 0,
     seconds: 0
   })
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     // Set your target date here - example: 30 days from now
@@ -25,8 +26,10 @@ export default function Home() {
         const seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
         setTimeLeft({ days, hours, minutes, seconds })
+        setIsLoaded(true)
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+        setIsLoaded(true)
         clearInterval(timer)
       }
     }, 1000)
@@ -89,7 +92,7 @@ export default function Home() {
           </span>
         </h2>
 
-        <div className="countdown-display">
+        <div className={`countdown-display ${isLoaded ? 'fade-in' : 'hidden'}`}>
           <div className="time-unit">
             <div className="time-number">{timeLeft.days.toString().padStart(2, '0')}</div>
             <div className="time-label">DAYS</div>

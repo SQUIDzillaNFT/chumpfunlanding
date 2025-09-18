@@ -136,6 +136,19 @@ body {
   justify-content: center;
   gap: 60px;
   margin-top: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.countdown-display.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.countdown-display.hidden {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .time-unit {
